@@ -1,0 +1,29 @@
+import { useState, useEffect, useCallback } from 'react';
+import { checkBackendHealth } from '../services/healthService.js';
+
+export const useHealthCheck = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchHealth = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await checkBackendHealth();
+      setData(response.data);
+    } catch (err) {
+      setError(err.message || 'Failed to communicate with backend');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchHealth();
+  }, [fetchHealth]);
+
+  return { data, loading, error, refetch: fetchHealth };
+};
+
+export default useHealthCheck;

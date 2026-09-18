@@ -1,0 +1,31 @@
+{
+  "name": "nuzio-ai-root",
+  "version": "1.0.0",
+  "description": "Nuzio AI - Personalized AI-powered daily news briefing web application (MERN)",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --prefix \"[{name}]\" --names \"backend,frontend\" -c \"cyan,magenta\" \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "install:all": "npm install --workspace=frontend && npm install --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend"
+  },
+  "keywords": [
+    "nuzio-ai",
+    "mern",
+    "news-briefing",
+    "react",
+    "express",
+    "node",
+    "mongodb"
+  ],
+  "author": "Nuzio AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
