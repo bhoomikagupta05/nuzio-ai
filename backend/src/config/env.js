@@ -22,6 +22,7 @@ export const config = {
   clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
   geminiApiKey: process.env.GEMINI_API_KEY,
   newsApiKey: process.env.NEWS_API_KEY,
+  newsApiAiKey: process.env.NEWSAPI_AI_KEY,
   isDev: (process.env.NODE_ENV || 'development') === 'development',
   isProd: process.env.NODE_ENV === 'production',
 };
